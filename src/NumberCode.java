@@ -1,0 +1,145 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class NumberCode {
+    //  по заданному целому числу или числу с плавающей запятой найдите его противоположность.
+    public static int opposite(int number)
+    {
+        number = number*-1;
+        return number;
+    }
+    public static int oppositeBest(int number)
+    {
+        return -number;
+    }
+
+    // Вы были в походе с друзьями далеко от дома, но когда приходит время возвращаться, вы понимаете, что у вас заканчивается топливо, а ближайшая заправка находится в нескольких 50милях отсюда! Вы знаете, что в среднем пробег вашей машины составляет около 25миль на галлон. Остались 2галлоны.
+    //
+    //Учитывая эти факторы, напишите функцию, которая сообщит вам, можно ли добраться до насоса или нет.
+    //
+    //Функция должна вернуться, trueесли это возможно, а falseесли нет.
+
+    public static boolean zeroFuel(double distanceToPump, double mpg, double fuelLeft) {
+        // Your code here!
+        double result = mpg * fuelLeft - distanceToPump;
+        if(result>=0){
+            return true;
+        }
+        return false;
+    }
+    static boolean zeroFuelBest(double distanceToPump, double mpg, double fuelLeft) {
+        return distanceToPump <= mpg * fuelLeft;
+    }
+
+    // Первое столетие охватывает от 1 года до 100 года включительно , второе столетие — от 101 года до 200 года включительно и т. д.
+    //
+    //Задача
+    //Учитывая год, верните столетие, в котором он находится.
+
+    public static int century(int number) {
+        // your code goes here
+        if(number % 100 !=0){
+            number = number /100 + 1;
+        }else {
+            number/=100;
+        }
+        return number;
+    }
+    public static int centuryClever(int number) {
+        return (number + 99) / 100;
+    }
+
+    //Напишите программу, которая находит сумму всех чисел от 1 до num.
+    // Число всегда будет положительным целым числом, большим 0.
+    public static int summation(int n) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            list.add(i);
+            System.out.println(list);}
+        int sum = list.stream().mapToInt(Integer::intValue).sum();
+        return sum;
+    }
+    public static int summationClever(int n) {
+
+        return  n*(n+1)/2;
+    }
+    public static int summationBest(int n) {
+        int sum = 0;
+        for (int i = 0; i <= n; i++) {
+            sum += i;
+
+        }
+        return sum;
+    }
+
+    //Ваша задача — создать функцию, выполняющую четыре основные математические операции.
+    //
+    //Функция должна принимать три аргумента — операция(строка/символ), значение1(число), значение2(число).
+    //Функция должна возвращать результат чисел после применения выбранной операции.
+    public static Integer basicMath(String op, int v1, int v2) {
+        Integer total = 0;
+        switch (op) {
+            case "+":
+                total = v1 + v2;
+                break;
+            case "-":
+                total = v1 - v2;
+                break;
+            case "*":
+                total = v1 * v2;
+                break;
+            case "/":
+                total = v1 / v2;
+                break;
+        }
+        return total;
+    }
+    public static Integer basicMathBest(String op, int v1, int v2) {
+        switch (op) {
+            case "-":
+                return v1 - v2;
+            case "+":
+                return v1 + v2;
+            case "*":
+                return v1 * v2;
+            case "/": {
+                if (v2 == 0)
+                    throw new IllegalArgumentException("Division by zero");
+                return v1 / v2;
+            }
+            default:
+                throw new IllegalArgumentException("Unknown operation: " + op);
+        }
+    }
+
+    //Создайте функцию, которая принимает целое число в качестве аргумента
+    // и возвращает результат "Even"для четных или "Odd"нечетных чисел.
+    public static String evenOrOdd(int number) {
+        if(number % 2 == 0) {
+            return "Even";
+        } else
+            return "Odd"; // Place code here;
+    }
+    public static String evenOrOddBeast(int number) {
+        return (number % 2) != 0 ? "Odd" : "Even";
+    }
+
+    //Реализуйте функцию, которая принимает 3 целочисленных значения a, b, c. Функция должна возвращать true,
+    // если треугольник можно построить со сторонами заданной длины, и false в любом другом случае.
+    //(В этом случае все треугольники должны иметь поверхность больше 0, чтобы их можно было принять).
+    public static boolean isTriangle(int a, int b, int c){
+        if ((a + b) > c && (b + c) > a && (c + a) > b) {
+            return true;
+        }else if (a <= 0 || b <= 0 || c <= 0) {
+            return false;
+        } else {
+            return false;
+        }
+    }
+    public static boolean isTriangleBest(int a, int b, int c){
+        return ((a < b + c) && (b < a + c) && (c < a + b));
+    }
+    public static boolean isTriangleClever(int a, int b, int c){
+        return ((a + b) > c && (a + c) > b && (b + c) > a) ? true : false;
+    }
+}

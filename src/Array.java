@@ -1,0 +1,121 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.stream.IntStream;
+
+public class Array {
+
+    // Рассмотрим массив/список овец, в котором некоторые овцы могут отсутствовать на своем месте.
+    // Нам нужна функция,
+    // которая подсчитывает количество овец, присутствующих в массиве (истина означает наличие).
+
+    public int countSheeps(Boolean[] arrayOfSheeps) {
+        int result = 0;
+        for (int i = 0; i < arrayOfSheeps.length; i++) {
+            if(arrayOfSheeps[i]!= null && arrayOfSheeps[i].equals(true)) {
+                result += 1;
+            }
+        }
+        return result;
+    }
+    public int countSheepsBest(Boolean[] arrayOfSheeps) {
+        int counter = 0;
+        for (Boolean present : arrayOfSheeps) {
+            if (present != null && present) {
+                counter += 1;
+            }
+        }
+        return counter;
+    }
+    public int countSheepsClever(Boolean[] arrayOfSheeps) {
+        return Collections.frequency(Arrays.asList(arrayOfSheeps), true);
+    }
+
+    //Вы получаете массив чисел, возвращаете сумму всех положительных чисел.
+    //
+    //Пример [1,-4,7,12]=>1 + 7 + 12 = 20
+    //
+    //Примечание. Если суммировать нечего, сумма по умолчанию равна 0.
+    public static int sum(int[] arr)
+    {
+        int sum = 0;
+
+        for(int i=0; i<arr.length; i++) {
+            if(arr[i] > 0)
+            {
+                sum += arr[i];
+            }
+        }
+        return sum;
+    }
+    public static int sumBest(int[] arr){
+        int result = 0;
+        for (int i : arr) {
+            if (i > 0) {
+                result += i;
+            }
+        }
+        return result;
+    }
+    public static int sumClever(int[] arr){
+        return Arrays.stream(arr).filter(v -> v > 0).sum();
+    }
+
+    //Найдите наименьшее число в массиве
+    public static int findSmallestInt(int[] args) {
+        int result = Integer.MAX_VALUE;
+        for (int i = 0; i < args.length; i++) {
+            if (args[i] < result) {
+                result = args[i];
+            }
+        }
+        return result;
+    }
+    public static int findSmallestIntClever(int[] args) {
+        Arrays.sort(args);
+        return args[0];
+    }
+    public static int findSmallestIntBest(int[] args) {
+        return IntStream.of(args).min().getAsInt();
+    }
+
+    //Учитывая треугольник последовательных нечетных чисел:
+    //
+    //             1
+    //          3     5
+    //       7     9    11
+    //   13    15    17    19
+    //21    23    25    27    29
+    //...
+    //Вычислите сумму чисел в n- й строке этого треугольника (начиная с индекса 1), например: ( Ввод --> Выход )
+
+    public static int rowSumOddNumbers(int n) {
+        int startNumber = (n * (n - 1)) + 1;
+
+        // Calculate the sum of the numbers in the nth row
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += startNumber + (2 * i);
+        }
+
+        return sum;
+    }
+    public static int rowSumOddNumbersBest(int n) {
+    /* sum of consequent M numbers is (M+1)M/2, so
+     * we may know how many numbers were below
+     * our ROW : numbersBelow = ((n-1)*(n))/2.
+     * Now we may calculate first number in row:
+     * firstNumberInRow = 2*numbersBelow+1.
+     * So, firstNumberInRow = n*n-n+1 and
+     * last number in ROW is n*n-n+1 + 2(n-1).
+     * Let assume that last number before row is
+     * x1 and last number in row is x2. It's known
+     * that 1+3+5+...+(2k-1) = k*k.
+     * Sum in row must be x2*x2 - x1*x1.
+     // OUR x1 = (n*n-n)/2 and x2 = (n*n+n)/2.
+     * After some simplification: SUM = n*n*n. */
+        return n*n*n;
+    }
+    public static int rowSumOddNumbersClever(int n) {
+        return (int) Math.pow(n,3);
+    }
+}
