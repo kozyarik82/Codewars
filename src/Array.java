@@ -1,6 +1,9 @@
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
+
+import static java.util.Arrays.asList;
 
 public class Array {
 
@@ -27,7 +30,7 @@ public class Array {
         return counter;
     }
     public int countSheepsClever(Boolean[] arrayOfSheeps) {
-        return Collections.frequency(Arrays.asList(arrayOfSheeps), true);
+        return Collections.frequency(asList(arrayOfSheeps), true);
     }
 
     //Вы получаете массив чисел, возвращаете сумму всех положительных чисел.
@@ -117,5 +120,47 @@ public class Array {
     }
     public static int rowSumOddNumbersClever(int n) {
         return (int) Math.pow(n,3);
+    }
+
+    //Напишите функцию, которая принимает массив чисел и возвращает сумму чисел.
+    // Числа могут быть отрицательными или нецелыми.
+    // Если массив не содержит чисел, вам следует вернуть 0.
+
+    public static double sum(double[] numbers) {
+        return DoubleStream.of(numbers).sum();
+    }
+    public static double sumBest(double[] numbers) {
+        return Arrays.stream(numbers).sum();
+    }
+
+    //Сможете ли вы найти иголку в стоге сена?
+    //Напишите функцию findNeedle(), которая принимает arrayполный мусор, но содержит один"needle"
+    //После того, как ваша функция найдет иглу, она должна вернуть сообщение (в виде строки), в котором говорится:
+    //"found the needle at position "плюс indexон нашел иголку, так что:
+
+    public static String findNeedle(Object[] haystack) {
+        String result = "needle";
+        int index =0;
+        for (int i = 0; i < haystack.length; i++) {
+            if (haystack[i] == result) {
+                index = i;
+            }
+        }
+        return "found the needle at position " + index;
+    }
+    public static String findNeedleClever(Object[] haystack) {
+        return String.format("found the needle at position %d", asList(haystack).indexOf("needle"));
+    }
+    public static String findNeedleBest(Object[] haystack) {
+
+        for (int i = 0; i < haystack.length; i++) {
+            if (haystack[i] == "needle") {
+                return "found the needle at position " + i;
+            }
+        }
+        return "needle be lost, yo";
+    }
+    static String findNeedleClever1(Object[] haystack) {
+        return "found the needle at position " + asList(haystack).indexOf("needle");
     }
 }
