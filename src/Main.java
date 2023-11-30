@@ -12,5 +12,7 @@ public class Main {
         System.out.println(Array.sum(number));
         Object[] haystack = new Object[]{"283497238987234", "a dog", "a cat", "some random junk", "a piece of hay", "needle", "something somebody lost a while ago"};
         System.out.println(Array.findNeedle(haystack));
+        System.out.println(StringCode.smash( "Bilal", "Djaghout" ));
+        System.out.println(NumberCode.bmi(80, 1.80));
     }
 }

@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.OptionalDouble;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
@@ -162,5 +163,23 @@ public class Array {
     }
     static String findNeedleClever1(Object[] haystack) {
         return "found the needle at position " + asList(haystack).indexOf("needle");
+    }
+
+    //Напишите функцию, которая вычисляет среднее значение чисел в заданном списке.
+    //Примечание. Пустые массивы должны возвращать 0.
+
+    public static double find_average(int[] array){
+        double sum = Arrays.stream(array).sum();
+        long count = Arrays.stream(array).count();
+        return sum / count;
+    }
+    public static double find_averageClever(int[] array){
+        return Arrays.stream(array).average().orElse(0);
+    }
+    public static double find_averageBest(int[] array){
+        double sum = 0;
+        for (int val : array)
+            sum += val;
+        return sum / array.length;
     }
 }

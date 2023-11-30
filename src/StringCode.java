@@ -1,10 +1,9 @@
+import java.util.Arrays;
 import java.util.List;
 
 public class StringCode {
     // Дезоксирибонуклеиновая кислота, ДНК, является основной молекулой хранения информации в биологических системах. Он состоит из четырех оснований нуклеиновых кислот: гуанина («G»), цитозина («C»), аденина («А») и тимина («Т»).
-    //
     //Рибонуклеиновая кислота, РНК, является основной молекулой-мессенджером в клетках. РНК несколько отличается от ДНК по химической структуре и не содержит тимина. В РНК тимин заменен другой нуклеиновой кислотой урацилом («U»).
-    //
     //Создайте функцию, которая переводит заданную строку ДНК в РНК.
 
     public static String dnaToRna(String dna) {
@@ -20,7 +19,7 @@ public class StringCode {
         return dna.replaceAll("U", "T");
     }
 
-    //Напишите функцию RemoveExclamationMarks, которая удаляет
+    // Напишите функцию RemoveExclamationMarks, которая удаляет
     // все восклицательные знаки из заданной строки.
     static String removeExclamationMarks(String s) {
         String result = "";
@@ -43,8 +42,6 @@ public class StringCode {
         for (int i = 0; i < numberString.length(); i++) {
             char digit = numberString.charAt(i);
             int intValue = Character.getNumericValue(digit);
-
-            // Replace digits below 5 with '0' and 5 and above with '1'
             if (intValue < 5) {
                 result.append('0');
             } else {
@@ -109,5 +106,17 @@ public class StringCode {
     }
     public static String disemvowelLight(String str) {
         return str.replaceAll("[aAeEiIoOuU]", "");
+    }
+
+    //Напишите функцию, которая принимает массив слов, объединяет их в предложение и возвращает это предложение.
+    // Вы можете игнорировать необходимость очистки слов или добавления знаков препинания,
+    // но вам следует добавлять пробелы между каждым словом. Будьте внимательны:
+    // ни в начале, ни в конце предложения не должно быть пробела!
+
+    public static String smash(String... words) {
+        return String.join(" ", words);
+    }
+    public static String smashBest(String... words) {
+        return words != null ? String.join(" ", words) : null;
     }
 }
