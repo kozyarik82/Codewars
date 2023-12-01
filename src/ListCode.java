@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListCode {
@@ -22,4 +23,6 @@ public class ListCode {
     public int sumClever(List<?> mixed) {
         return mixed.stream().mapToInt(o -> Integer.parseInt(o.toString())).sum();
     }
+
+
 }

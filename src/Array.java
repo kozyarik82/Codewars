@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.OptionalDouble;
@@ -5,6 +6,7 @@ import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 import static java.util.Arrays.asList;
+import static java.util.Arrays.deepToString;
 
 public class Array {
 
@@ -181,5 +183,26 @@ public class Array {
         for (int val : array)
             sum += val;
         return sum / array.length;
+    }
+
+    // По городу движется автобус, который на каждой остановке забирает и высаживает несколько человек.
+    //Вам предоставляется список (или массив) пар целых чисел. Элементы каждой пары представляют собой количество людей, входящих в автобус (первый элемент) и количество людей, выходящих из автобуса (второй элемент) на остановке.
+    //Ваша задача — вернуть количество людей, которые все еще находятся в автобусе после последней остановки (после последнего массива). Несмотря на то, что это последняя автобусная остановка, автобус может быть не пустым, и в автобусе все еще могут быть люди, они, вероятно, там спят :D
+    //Взгляните на тестовые примеры.
+    //Имейте в виду, что тестовые примеры гарантируют, что количество людей в автобусе всегда >= 0. Поэтому возвращаемое целое число не может быть отрицательным.
+    //Второе значение в первой паре массива равно 0, поскольку на первой остановке автобус пуст.
+
+    public static int countPassengers(ArrayList<int[]> stops) {
+        int passengers = 0;
+        for (int[] stop : stops) {
+            passengers += stop[0];
+            passengers -= stop[1];
+        }
+        return passengers;
+    }
+    public static int countPassengersBest(ArrayList<int[]> stops) {
+        return stops.stream()
+                .mapToInt(x -> x[0] - x[1])
+                .sum();
     }
 }

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println(StringCode.fakeBin("125761"));
@@ -14,5 +16,10 @@ public class Main {
         System.out.println(Array.findNeedle(haystack));
         System.out.println(StringCode.smash( "Bilal", "Djaghout" ));
         System.out.println(NumberCode.bmi(80, 1.80));
+        ArrayList<int[]> list = new ArrayList<>();
+        list.add(new int[] {10,0});
+        list.add(new int[] {3,5});
+        list.add(new int[] {2,5});
+        System.out.println(Array.countPassengers(list));
     }
 }
