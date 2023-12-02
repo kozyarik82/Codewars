@@ -203,15 +203,12 @@ public class NumberCode {
     // Население регулярно увеличивается на 2 percentгод, причем 50каждый год в город приезжают новые жители.
     // Сколько лет нужно городу, чтобы его население превысило или сравнялось с p = 1200жителями?
 
-//    public static int nbYear(int p0, double percent, int aug, int p) {
-////        int result = (p - p0) / (p0 * ((int)percent/100) + aug);
-//        int count = 0;
-//        int result = p0;
-//        int i;
-//        for ( i>0) {
-//            result = result + (p0 * ((int) percent / 100) + aug);
-//            count++;
-//        }
-//        return result;
-//    }
+    public static int nbYear(int p0, double percent, int aug, int p) {
+        int years = 0;
+        while (p0 <= p) {
+            p0 += (int) (p0 * (percent / 100)) + aug;
+            years++;
+        }
+        return years;
+    }
 }

@@ -23,6 +23,6 @@ public class Main {
         System.out.println(Array.countPassengers(list));
         int[] input = new int[] {-1,-2,-3,-4,-5};
         System.out.println(Array.invertBest(input));
-//        System.out.println(NumberCode.nbYear(1500, 5, 100, 5000));
+        System.out.println(NumberCode.nbYear(1500, 5, 100, 5000));
     }
 }
