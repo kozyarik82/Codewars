@@ -21,5 +21,8 @@ public class Main {
         list.add(new int[] {3,5});
         list.add(new int[] {2,5});
         System.out.println(Array.countPassengers(list));
+        int[] input = new int[] {-1,-2,-3,-4,-5};
+        System.out.println(Array.invertBest(input));
+//        System.out.println(NumberCode.nbYear(1500, 5, 100, 5000));
     }
 }

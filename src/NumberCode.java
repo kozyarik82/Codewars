@@ -181,4 +181,37 @@ public class NumberCode {
         double bmi =weight/(height*height);
         return bmi <= 18.5 ? "Underweight": bmi <=25.0 ? "Normal" : bmi<=30.0 ? "Overweight" : "Obese";
     }
+
+    // Суть этой ката заключается в умножении заданного числа на восемь,
+    // если оно четное, и на девять в противном случае.
+
+    public static int simpleMultiplication(int n) {
+        if (n % 2 == 0) {
+            return n * 8;
+        }else {
+            return n * 9;
+        }
+    }
+    public static int simpleMultiplicationBest(int n) {
+        return n % 2 == 0 ? n * 8 : n * 9;
+    }
+    public static int simpleMultiplicationClever(int n) {
+        return n * (n % 2 + 8);
+    }
+
+    // В небольшом городе численность населения p0 = 1000на начало года.
+    // Население регулярно увеличивается на 2 percentгод, причем 50каждый год в город приезжают новые жители.
+    // Сколько лет нужно городу, чтобы его население превысило или сравнялось с p = 1200жителями?
+
+//    public static int nbYear(int p0, double percent, int aug, int p) {
+////        int result = (p - p0) / (p0 * ((int)percent/100) + aug);
+//        int count = 0;
+//        int result = p0;
+//        int i;
+//        for ( i>0) {
+//            result = result + (p0 * ((int) percent / 100) + aug);
+//            count++;
+//        }
+//        return result;
+//    }
 }

@@ -119,4 +119,23 @@ public class StringCode {
     public static String smashBest(String... words) {
         return words != null ? String.join(" ", words) : null;
     }
+
+    // Напишите функцию, которая преобразует входную строку в верхний регистр.
+
+    public static String MakeUpperCase(String str){
+        return str.toUpperCase();
+    }
+    public static String MakeUpperCaseBest(String str){
+        return str == null ? null : str.toUpperCase();
+    }
+
+    // Завершите решение так, чтобы оно возвращало true,
+    // если первый переданный аргумент (строка) заканчивается вторым аргументом (также строкой).
+
+    public static boolean solution(String str, String ending) {
+        return str.endsWith(ending) ? true : false;
+    }
+    public static boolean solutionBest(String str, String ending) {
+        return str.endsWith(ending);
+    }
 }

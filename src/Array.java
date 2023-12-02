@@ -1,12 +1,10 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.OptionalDouble;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 import static java.util.Arrays.asList;
-import static java.util.Arrays.deepToString;
 
 public class Array {
 
@@ -204,5 +202,21 @@ public class Array {
         return stops.stream()
                 .mapToInt(x -> x[0] - x[1])
                 .sum();
+    }
+
+    // Учитывая набор чисел, верните аддитивную обратную величину каждого из них.
+    // Каждое положительное становится отрицательным, а отрицательное становится положительным.
+    //invert([1,2,3,4,5]) == [-1,-2,-3,-4,-5]
+    //invert([1,-2,3,-4,5]) == [-1,2,-3,4,-5]
+    //invert([]) == []
+
+    public static int[] invertBest(int[] array) {
+        return Arrays.stream(array).map(x -> -x).toArray();
+    }
+    public static int[] invert(int[] array) {
+        for(int i = 0; i < array.length; i++) {
+            array[i] *= -1;
+        }
+        return array;
     }
 }
