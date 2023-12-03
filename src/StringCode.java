@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StringCode {
     // Дезоксирибонуклеиновая кислота, ДНК, является основной молекулой хранения информации в биологических системах. Он состоит из четырех оснований нуклеиновых кислот: гуанина («G»), цитозина («C»), аденина («А») и тимина («Т»).
@@ -138,4 +139,81 @@ public class StringCode {
     public static boolean solutionBest(String str, String ending) {
         return str.endsWith(ending);
     }
+
+    // На фабрике принтер печатает этикетки для коробок. Для одного вида коробок принтеру приходится использовать цвета,
+    // которые для простоты называются буквами от a to m.
+    //Цвета, используемые принтером, записываются в управляющую строку.
+    // Например, «хорошая» управляющая строка будет aaabbbbhaijjjm означать,
+    // что принтер трижды использовал цвет a, четыре раза цвет b, один раз цвет h, затем один раз цвет a...
+    //Иногда возникают проблемы: отсутствие цветов, техническая неисправность и выдается "плохая" управляющая строка,
+    // например, aaaxbbbbyyhwawiwjjjwwmс буквами не из a to m.
+    //Вам нужно написать функцию printer_error, которая по заданной строке будет возвращать частоту ошибок
+    // принтера в виде строки , представляющей рациональное число, числитель которого — это количество ошибок,
+    // а знаменатель — длина управляющей строки. Не сводите эту дробь к более простому выражению.
+    //Строка имеет длину большую или равную единице и содержит только буквы от aдо z.
+
+    public static String printerError(String s) {
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if ("[nopqrstuvwxyz]".contains(String.valueOf(s.charAt(i)))) {
+                count++;
+            }
+        }
+        return count + "/" + s.length();
+    }
+    public static String printerErrorClever(String s) {
+        return s.replaceAll("[a-m]", "").length() + "/" + s.length();
+    }
+    public static String printerErrorBest(String s) {
+        long errs = s.chars().filter( ch -> ch > 'm').count();
+        return errs+"/"+s.length();
+    }
+
+    // Напишите функцию для преобразования имени в инициалы.
+    // Эта ката состоит из двух слов с одним пробелом между ними.
+    //В результате должны быть две заглавные буквы с точкой, разделяющей их.
+    //Это должно выглядеть так:
+    //Sam Harris=>S.H
+    //patrick feeney=>P.F
+
+    public static String abbrevName(String name) {
+        StringBuilder initials = new StringBuilder();
+
+        String[] nameParts = name.split(" ");
+
+        for (String part : nameParts) {
+            if (!part.isEmpty()) {
+                initials.append(nameParts[0].charAt(0)).append(".").append(nameParts[1].charAt(0));
+            }
+        }
+        return initials.toString().toUpperCase();
+    }
+    public static String convertToInitials(String name) {
+        StringBuilder initials = new StringBuilder();
+        String[] nameParts = name.split(" ");
+        if (nameParts.length == 2) {
+            initials.append(nameParts[0].charAt(0)).append(".").append(nameParts[1].charAt(0));
+        }
+        return initials.toString().toUpperCase();
+    }
+    public static String abbrevNameBest(String name) {
+        String[] names = name.split(" ");
+        return (names[0].charAt(0) + "." + names[1].charAt(0)).toUpperCase();
+    }
+    public static String abbrevNameBest1(String name) {
+        return Arrays.stream(name.split(" "))
+                .map(String::toUpperCase)
+                .map(word -> word.substring(0, 1))
+                .collect(Collectors.joining("."));
+    }
+
+    // Создайте функцию, которая будет возвращать оператор приветствия, использующий входные данные;
+    // ваша программа должна вернуть, "Hello, <name> how are you doing today?".
+    public static String greet(String name) {
+        return String.format("Hello, %s how are you doing today?", name);
+    }
+
+
+
+
 }

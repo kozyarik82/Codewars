@@ -219,4 +219,17 @@ public class Array {
         }
         return array;
     }
+
+    // Учитывая непустой массив целых чисел, верните результат умножения значений по порядку. Пример:
+    //[1, 2, 3, 4] => 1 * 2 * 3 * 4 = 24
+    public static int grow(int[] x){
+        int result = 1;
+        for (int j : x) {
+            result = result * j;
+        }
+        return result;
+    }
+    public static int growClever(int[] x){
+        return Arrays.stream(x).reduce(1 ,(a, b) -> a * b);
+    }
 }

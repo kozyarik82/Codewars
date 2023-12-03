@@ -24,5 +24,12 @@ public class Main {
         int[] input = new int[] {-1,-2,-3,-4,-5};
         System.out.println(Array.invertBest(input));
         System.out.println(NumberCode.nbYear(1500, 5, 100, 5000));
+        String s = "aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz";
+        System.out.println(StringCode.printerError(s));
+        System.out.println(StringCode.abbrevName("Evan Cole"));
+        System.out.println(Array.grow(new int[]{2, 2, 2, 2, 2, 2}));
+        System.out.println(NumberCode.getSum(-20, -301));
+        System.out.println(NumberCode.paperWorkSecond(5,5));
+        System.out.println(NumberCode.hero(1947123137, 1762811205));
     }
 }

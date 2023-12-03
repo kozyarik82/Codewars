@@ -205,10 +205,59 @@ public class NumberCode {
 
     public static int nbYear(int p0, double percent, int aug, int p) {
         int years = 0;
-        while (p0 <= p) {
+        while (p0 < p) {
             p0 += (int) (p0 * (percent / 100)) + aug;
             years++;
         }
         return years;
+    }
+
+    // Учитывая два целых числа aи b, которые могут быть положительными или отрицательными,
+    // найдите сумму всех целых чисел между ними и включая их и верните ее.
+    // Если два числа равны, верните aили b.
+    // Примечание: a и bне з аказываются!
+
+    public static int getSum(int a, int b) {
+        if (a != b) {
+            return a + b;
+        } else {
+            return a;
+        }
+    }
+    public int getSumBest(int a, int b) {
+        int res = 0;
+        for (int i = Math.min(a, b); i <= Math.max(a, b); i++) {
+            res += i;
+        }
+        return a == b ? a : res;
+    }
+
+    // Ваши одноклассники попросили вас скопировать для них кое-какие документы.
+    // Вы знаете, что одноклассников n, а в документах m страниц.
+    // Ваша задача — посчитать, сколько пустых страниц вам нужно. Если n < 0или m < 0вернуть 0.
+
+    public static int paperWork(int n, int m) {
+        if (n < 0 || m < 0) {
+            return 0;
+        } else {
+            return n * m;
+        }
+    }
+    public static int paperWorkSecond(int n, int m) {
+        return n < 0 || m < 0 ? 0 : n * m;
+    }
+    public static int paperWork3(int n, int m) {
+        return (n | m) < 0 ? 0 : n * m;
+    }
+
+    // Герой направляется в замок, чтобы выполнить свою миссию. Однако ему сказали,
+    // что замок окружен парой могущественных драконов! каждому дракону для победы требуется 2 пули,
+    // наш герой понятия не имеет, сколько пуль он должен нести. Если предположить,
+    // что он возьмет определенное количество пуль и двинется вперед, чтобы сразиться с другим
+    // определенным заданным количеством драконов, выживет ли он?
+    // Возвращайте true, если да, и false в противном случае :)
+
+    public static boolean hero(int bullets, int dragons) {
+        return bullets >= (long)dragons * 2;
     }
 }
