@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class StringCode {
     // Дезоксирибонуклеиновая кислота, ДНК, является основной молекулой хранения информации в биологических системах. Он состоит из четырех оснований нуклеиновых кислот: гуанина («G»), цитозина («C»), аденина («А») и тимина («Т»).
@@ -213,7 +214,29 @@ public class StringCode {
         return String.format("Hello, %s how are you doing today?", name);
     }
 
+    // Если не можешь заснуть, просто посчитай овец!!
+    //Задача:
+    //3 Например, если задано неотрицательное целое число, верните строку с ропотом:
+    // "1 sheep...2 sheep...3 sheep...". Ввод всегда будет действительным,
+    // т.е. отрицательных целых чисел не будет.
 
-
-
+    public static String countingSheep(int num) {
+        String result = "";
+        for (int i = 1; i <= num; i++) {
+            result += i + " sheep...";
+        }
+        return result;
+    }
+    public static String countingSheepClever(int num) {
+        return IntStream.rangeClosed(1, num)
+                .mapToObj(i -> i + " sheep...")
+                .collect(Collectors.joining());
+    }
+    public static String countingSheepBest(int num) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 1; i <= num; i++) {
+            stringBuilder.append(i).append(" sheep...");
+        }
+        return stringBuilder.toString();
+    }
 }

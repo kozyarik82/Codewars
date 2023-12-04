@@ -31,5 +31,6 @@ public class Main {
         System.out.println(NumberCode.getSum(-20, -301));
         System.out.println(NumberCode.paperWorkSecond(5,5));
         System.out.println(NumberCode.hero(1947123137, 1762811205));
+        System.out.println(StringCode.countingSheep(5));
     }
 }
