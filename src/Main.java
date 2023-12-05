@@ -32,5 +32,11 @@ public class Main {
         System.out.println(NumberCode.paperWorkSecond(5,5));
         System.out.println(NumberCode.hero(1947123137, 1762811205));
         System.out.println(StringCode.countingSheep(5));
+        System.out.println(NumberCode.sortDesc(254637));
+        System.out.println(StringCode.duplicateCountClever("abcdeabc"));
+        System.out.println(NumberCode.isSquare(188664625));
+        System.out.println(StringCode.validatePin1("1232"));
+        System.out.println(ListCode.min(new int[]{-52, 56, 30, 29, -54, 0, -110}));
+        System.out.println(ListCode.max(new int[]{4, 6, 2, 1, 9, 63, -134, 566}));
     }
 }

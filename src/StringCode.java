@@ -1,7 +1,8 @@
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static java.util.Arrays.stream;
 
 public class StringCode {
     // Дезоксирибонуклеиновая кислота, ДНК, является основной молекулой хранения информации в биологических системах. Он состоит из четырех оснований нуклеиновых кислот: гуанина («G»), цитозина («C»), аденина («А») и тимина («Т»).
@@ -202,7 +203,7 @@ public class StringCode {
         return (names[0].charAt(0) + "." + names[1].charAt(0)).toUpperCase();
     }
     public static String abbrevNameBest1(String name) {
-        return Arrays.stream(name.split(" "))
+        return stream(name.split(" "))
                 .map(String::toUpperCase)
                 .map(word -> word.substring(0, 1))
                 .collect(Collectors.joining("."));
@@ -238,5 +239,99 @@ public class StringCode {
             stringBuilder.append(i).append(" sheep...");
         }
         return stringBuilder.toString();
+    }
+
+    // Подсчитайте количество дубликатов
+    // Напишите функцию, которая будет возвращать количество различных буквенных символов и числовых цифр,
+    // не зависящих от регистра, которые встречаются во входной строке более одного раза.
+    // Можно предположить, что входная строка содержит только буквы алфавита
+    // (как прописные, так и строчные) и числовые цифры.
+
+    public static int duplicateCount(String text) {
+        text = text.toLowerCase();
+        Map<Character, Integer> charCount = new HashMap<>();
+        for (char c : text.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+        }
+
+        // Count characters that occur more than once
+        int duplicateCount = 0;
+        for (int count : charCount.values()) {
+            if (count > 1) {
+                duplicateCount++;
+            }
+        }
+        return duplicateCount;
+    }
+    public static int duplicateCountBest(String text) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (char c : text.toLowerCase().toCharArray()) {
+            map.put(c, map.containsKey(c) ? 1 : 0);
+        }
+        return (int) map.values().stream().filter(e -> e > 0).count();
+    }
+    public static int duplicateCountClever(String text) {
+        int ans = 0;
+        text = text.toLowerCase();
+        while (text.length() > 0) {
+            String firstLetter = text.substring(0,1);
+            text = text.substring(1);
+            if (text.contains(firstLetter)) ans ++;
+            text = text.replace(firstLetter, "");
+        }
+        return ans;
+    }
+    public static int duplicateCountBest1(String text) {
+        return (int)text.toLowerCase().chars()
+                .boxed()
+                .collect(Collectors.groupingBy(k->k,Collectors.counting()))
+                .values().stream().filter(e->e>1).count();
+    }
+
+    // В этом небольшом задании вам дается строка чисел, разделенных пробелами,
+    // и вы должны вернуть наибольшее и наименьшее число.
+    public static String highAndLow(String numbers) {
+        String[] numberArray = numbers.split(" ");
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+
+        for (String numStr : numberArray) {
+            int num = Integer.parseInt(numStr);
+            max = Math.max(max, num);
+            min = Math.min(min, num);
+        }
+
+        return max + " " + min;
+    }
+    static String highAndLowBest(String numbers) {
+        var stats = stream(numbers.split(" ")).mapToInt(Integer::parseInt).summaryStatistics();
+        return stats.getMax() + " " + stats.getMin();
+    }
+    public static String highAndLowBest1(String numbers) {
+        List<Integer> nums = Arrays.stream(numbers.split(" ")).map(Integer::parseInt).toList();
+        return "%s %s".formatted(Collections.max(nums), Collections.min(nums));
+    }
+
+    // Банкоматы допускают использование 4- или 6-значных PIN-кодов,
+    // а PIN-коды не могут содержать ничего, кроме ровно 4 или ровно 6 цифр.
+    //Если функции передана действительная строка PIN-кода, return true, иначе return false.
+    public static boolean validatePin(String pin) {
+        if (pin.length() == 4 || pin.length() == 6) {
+            if (pin.replaceAll("[0-9]", "").isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean validatePin1(String pin) {
+        return pin.matches("\\d{4}|\\d{6}");
+    }
+    public static boolean validatePin2(String pin) {
+        return pin.matches("[0-9]{4}|[0-9]{6}");
+    }
+    public static boolean validatePin3(String pin) {
+        if (pin.length() == 4 || pin.length() == 6)
+            return pin.chars().allMatch(Character::isDigit);
+        return false;
     }
 }

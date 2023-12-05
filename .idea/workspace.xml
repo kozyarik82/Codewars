@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="65dbbdaf-7ca7-4d0e-9d03-4774d46ab287" name="Changes" comment="tasks fundamental">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ListCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NumberCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NumberCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StringCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StringCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="CW" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701169623361</updated>
       <workItem from="1701169624473" duration="26980000" />
-      <workItem from="1701358311431" duration="32233000" />
+      <workItem from="1701358311431" duration="47176000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -135,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701640184046</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="tasks fundamental">
+      <option name="closed" value="true" />
+      <created>1701689637447</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1701689637447</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

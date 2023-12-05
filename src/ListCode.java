@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListCode {
@@ -24,5 +25,24 @@ public class ListCode {
         return mixed.stream().mapToInt(o -> Integer.parseInt(o.toString())).sum();
     }
 
+    // Ваша задача — создать две функции ( maxи min, или maximumи и minimumт. д., в зависимости от языка),
+    // которые получают на вход список целых чисел и возвращают наибольшее и наименьшее число
+    // в этом списке соответственно.
 
+    public static int min(int[] list) {
+        return Arrays.stream(list).min().getAsInt();
+    }
+
+    public static int max(int[] list) {
+        return Arrays.stream(list).max().getAsInt();
+    }
+    public int min1(int[] list) {
+        Arrays.sort(list);
+        return list[0];
+    }
+
+    public int max1(int[] list) {
+        Arrays.sort(list);
+        return list[list.length-1];
+    }
 }

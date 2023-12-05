@@ -1,5 +1,7 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class NumberCode {
     //  по заданному целому числу или числу с плавающей запятой найдите его противоположность.
@@ -58,6 +60,7 @@ public class NumberCode {
     }
 
     public static int summationClever(int n) {
+
         return  n*(n+1)/2;
     }
 
@@ -139,14 +142,6 @@ public class NumberCode {
         return ((a + b) > c && (a + c) > b && (b + c) > a) ? true : false;
     }
 
-//    //Добро пожаловать. В этом ката вас просят возвести в квадрат каждую цифру числа и соединить их.
-//    //Например, если мы пропустим через функцию 9119, получится 811181, потому что 9 2 равно 81, а 1 2 равно 1. (81-1-1-81)
-//    //Пример №2: Ввод 765 вернет/должен вернуть 493625, потому что 7 2 равно 49, 6 2 равно 36, а 5 2 равно 25. (49-36-25)
-//    //Примечание. Функция принимает целое число и возвращает целое число.
-//
-//    public int squareDigits(int n) {
-//        // TODO Implement me
-//    }
 
     // Напишите функцию bmi, вычисляющую индекс массы тела (bmi = вес/рост 2 ).
     //если ИМТ <= 18,5, верните «Недостаточный вес»
@@ -260,4 +255,69 @@ public class NumberCode {
     public static boolean hero(int bullets, int dragons) {
         return bullets >= (long)dragons * 2;
     }
+
+    // Ваша задача — создать функцию, которая может принимать в качестве аргумента любое неотрицательное целое число
+    // и возвращать его с цифрами в порядке убывания. По сути, переставьте цифры,
+    // чтобы получить максимально возможное число.
+
+    public static int sortDesc(final int num) {
+        String numberStr = Integer.toString(num);
+        char[] digits = numberStr.toCharArray();
+        Arrays.sort(digits);
+        reverseArray(digits);
+        String sortedNumberStr = new String(digits);
+        int sortedNumber = Integer.parseInt(sortedNumberStr);
+
+        return sortedNumber;
+    }
+
+    private static void reverseArray(char[] array) {
+        int left = 0;
+        int right = array.length - 1;
+
+        while (left < right) {
+            char temp = array[left];
+            array[left] = array[right];
+            array[right] = temp;
+
+            left++;
+            right--;
+        }
+    }
+    public static int sortDescBest(final int num) {
+        String[] array = String.valueOf(num).split("");
+        Arrays.sort(array, Collections.reverseOrder());
+        return Integer.valueOf(String.join("", array));
+    }
+    public static int sortDescClever(final int num) {
+        return Integer.parseInt(String.valueOf(num)
+                .chars()
+                .mapToObj(i -> String.valueOf(Character.getNumericValue(i)))
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.joining()));
+    }
+
+    // Учитывая целое число, определите, является ли оно квадратным :
+    // В математике квадратное число или идеальный квадрат — это целое число, которое является квадратом целого числа;
+    // другими словами, это произведение некоторого целого числа само на себя.
+    // В тестах всегда будет использоваться некоторое целое число,
+    // поэтому не беспокойтесь об этом в языках с динамической типизацией.
+    public static boolean isSquare(int n) {
+        for (int i = 0; i <= n / 2; i++) {
+            if (n < 0) {
+                return false;
+            }
+            if (i * i == n) {
+                return true;
+            }
+            if (i * i > n) {
+                break;
+            }
+        }
+        return false;
+    }
+    public static boolean isSquareClever(int n) {
+        return Math.sqrt(n) % 1 == 0;
+    }
+
 }
