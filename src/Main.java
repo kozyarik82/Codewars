@@ -38,5 +38,7 @@ public class Main {
         System.out.println(StringCode.validatePin1("1232"));
         System.out.println(ListCode.min(new int[]{-52, 56, 30, 29, -54, 0, -110}));
         System.out.println(ListCode.max(new int[]{4, 6, 2, 1, 9, 63, -134, 566}));
+        System.out.println(Array.findUniq(new double[]{0, 1, 0,0,0}));
+        System.out.println(Array.digitize(35231));
     }
 }

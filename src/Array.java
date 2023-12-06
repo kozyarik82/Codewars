@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
@@ -231,5 +229,28 @@ public class Array {
     }
     public static int growClever(int[] x){
         return Arrays.stream(x).reduce(1 ,(a, b) -> a * b);
+    }
+
+    // Есть массив с некоторыми числами. Все числа равны, кроме одного. Попробуйте найти его!
+    public static double findUniq(double arr[]) {
+        Arrays.sort(arr);
+        if (arr[0] != arr[1]) {
+            return arr[0];
+        } else {
+            return arr[arr.length - 1];
+        }
+    }
+    public static double findUniqBest(double[] arr) {
+        Arrays.sort(arr);
+        return arr[0] == arr[1] ? arr[arr.length-1]:arr[0];
+    }
+    // Учитывая случайное неотрицательное число,
+    // вам необходимо вернуть цифры этого числа в массиве в обратном порядке.
+    public static int[] digitize(long n) {
+        return new StringBuilder().append(n)
+                .reverse()
+                .chars()
+                .map(Character::getNumericValue)
+                .toArray();
     }
 }

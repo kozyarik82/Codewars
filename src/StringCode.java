@@ -334,4 +334,16 @@ public class StringCode {
             return pin.chars().allMatch(Character::isDigit);
         return false;
     }
+
+    // Завершите метод, который принимает логическое значение
+    // и возвращает "Yes"строку для true или "No"строку для false.
+    public static String boolToWord(boolean b) {
+        if (b) {
+            return "Yes";
+        }
+        return "No";
+    }
+    public static String boolToWordBest(boolean b) {
+        return b ? "Yes" : "No";
+    }
 }

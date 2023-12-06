@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="65dbbdaf-7ca7-4d0e-9d03-4774d46ab287" name="Changes" comment="tasks fundamental">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ListCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NumberCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NumberCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StringCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StringCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +29,20 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "kozyarik82"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="2333e4fb-f65a-4529-ac3a-ebe0d889c93b" />
+        <option name="url" value="https://github.com/kozyarik82/Codewars.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectId" id="2YnmGHbe0LvVXwQfk5RHA3fLnEP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -72,7 +85,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701169623361</updated>
       <workItem from="1701169624473" duration="26980000" />
-      <workItem from="1701358311431" duration="47176000" />
+      <workItem from="1701358311431" duration="57351000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -146,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701689637447</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="tasks fundamental">
+      <option name="closed" value="true" />
+      <created>1701774903927</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1701774903927</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
