@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -39,6 +40,11 @@ public class Main {
         System.out.println(ListCode.min(new int[]{-52, 56, 30, 29, -54, 0, -110}));
         System.out.println(ListCode.max(new int[]{4, 6, 2, 1, 9, 63, -134, 566}));
         System.out.println(Array.findUniq(new double[]{0, 1, 0,0,0}));
-        System.out.println(Array.digitize(35231));
+        System.out.println(Arrays.toString(Array.digitize(35231)));
+        System.out.println(Arrays.toString(Array.abs("425846")));
+        System.out.println(Array.betterThanAverage(new int[] {100, 90}, 11));
+        System.out.println(Arrays.toString(Array.countPositivesSumNegatives(new int[] {0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14})));
+        System.out.println(Array.check(new Object[] {"what", "a", "great", "kata"}, "kat"));
+        System.out.println(StringCode.whoLikesIt("Max", "John", "Mark"));
     }
 }

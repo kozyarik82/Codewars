@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
@@ -252,5 +253,84 @@ public class Array {
                 .chars()
                 .map(Character::getNumericValue)
                 .toArray();
+    }
+
+    public static int[] abs(String string) {
+        return new StringBuilder().append(string).reverse().chars().map(Character::getNumericValue).toArray();
+    }
+    static int[] digitizeBest(long n) {
+        return new StringBuilder(String.valueOf(n))
+                .reverse()
+                .chars()
+                .map(Character::getNumericValue)
+                .toArray();
+    }
+
+    // В вашем классе был тест, и вы его сдали. Поздравляем!
+    // Но вы амбициозный человек. Вы хотите знать, лучше ли вы, чем средний ученик в вашем классе.
+    // Вы получаете массив с результатами тестов ваших сверстников.
+    // Теперь подсчитайте среднее значение и сравните свой результат!
+    // Возвращайся, Trueесли тебе станет лучше, иначе False!
+    public static boolean betterThanAverage(int[] classPoints, int yourPoints) {
+//        int averagePoint = 0;
+//        for (int i = 0; i < classPoints.length; i++) {
+//            averagePoint += classPoints[i]/classPoints.length;
+//            if (yourPoints > averagePoint) {
+//                return true;
+//            }
+//        }
+//        return false;
+        return Arrays.stream(classPoints).average().getAsDouble() <= yourPoints;
+    }
+
+    // Дан массив целых чисел.
+    // Возвращает массив, где первый элемент — это количество положительных чисел,
+    // а второй элемент — сумма отрицательных чисел. 0 не является ни положительным, ни отрицательным.
+    // Если входные данные представляют собой пустой массив или имеют значение NULL, верните пустой массив.
+    public static int[] countPositivesSumNegatives(int[] input) {
+        if (input == null || input.length == 0) {
+            return new int[]{};
+        }
+        int countPositives = 0;
+        int sumNegatives = 0;
+        for (int i = 0; i < input.length; i++) {
+
+            if (input[i] > 0) {
+                countPositives++;
+            }
+            if (input[i] < 0) {
+                sumNegatives += input[i];
+            }
+        }
+        return new int[]{countPositives,sumNegatives};
+    }
+    public static int[] countPositivesSumNegativesBest(int[] input) {
+        return input == null || input.length == 0 ?
+                new int[0] :
+                new int[] { (int)IntStream.of(input).filter(i->i>0).count(), IntStream.of(input).filter(i->i<0).sum() };
+    }
+
+    // Вам будет предоставлен массив a и значение x. Все, что вам нужно сделать, это проверить,
+    // содержит ли предоставленный массив значение.
+    // Массив может содержать числа или строки. Х может быть любым.
+    // Возврат, true если массив содержит значение, false если нет.
+    public static boolean check(Object[] a, Object x) {
+        for (int i = 0; i < a.length; i++) {
+            if (a[i].equals(x)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean checkBest(Object[] a, Object x) {
+        return Arrays.asList(a).contains(x);
+    }
+    public static boolean checkBest1(Object[] a, Object x) {
+        for (Object o : a) {
+            if (Objects.equals(o, x)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
