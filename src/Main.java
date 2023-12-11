@@ -46,5 +46,6 @@ public class Main {
         System.out.println(Arrays.toString(Array.countPositivesSumNegatives(new int[] {0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14})));
         System.out.println(Array.check(new Object[] {"what", "a", "great", "kata"}, "kat"));
         System.out.println(StringCode.whoLikesIt("Max", "John", "Mark"));
+        System.out.println(Array.isValid(new char[] {'n','s','n','s','n','s','n','s','n','s'}));
     }
 }

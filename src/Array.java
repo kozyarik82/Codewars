@@ -333,4 +333,77 @@ public class Array {
         }
         return false;
     }
+
+    // Вы живете в городе Картезия, где все дороги расположены идеальной сеткой.
+    // Вы пришли на встречу на десять минут раньше и решили воспользоваться возможностью прогуляться.
+    // Город предоставляет своим гражданам приложение для создания ходьбы на их телефонах — каждый раз,
+    // когда вы нажимаете кнопку, оно отправляет вам массив однобуквенных строк,
+    // представляющих направления для ходьбы (например, ['n', 's', 'w', 'е']).
+    // Вы всегда проходите только один квартал для каждой буквы (направления), и вы знаете,
+    // что прохождение одного городского квартала занимает у вас одну минуту, поэтому создайте функцию,
+    // которая будет возвращать true , если прогулка, которую предлагает вам приложение, займет у вас ровно десять минут
+    // (вы не хочу ни рано, ни поздно!) и, конечно же, вернет вас в исходную точку.
+    // В противном случае верните false .
+    public static boolean isValid(char[] walk) {
+        String north = "";
+        String south = "";
+        String west = "";
+        String east = "";
+        for (int i = 0; i < walk.length; i++) {
+            if (walk[i] == 'n') {
+                north += walk[i];
+            }
+            if (walk[i] == 's') {
+                south += walk[i];
+            }
+            if (walk[i] == 'w') {
+                west += walk[i];
+            }
+            if (walk[i] == 'e') {
+                east += walk[i];
+            }
+        }
+        if (north.length() == south.length() && west.length() == east.length() && walk.length ==10) {
+            return true;
+        }
+        return false;
+    }
+    public static boolean isValidBest(char[] walk) {
+        if (walk.length != 10) {
+            return false;
+        }
+        int x = 0, y = 0;
+        for (int i = 0; i < 10; i++) {
+            switch (walk[i]) {
+                case 'n':
+                    y++;
+                    break;
+                case 'e':
+                    x++;
+                    break;
+                case 's':
+                    y--;
+                    break;
+                case 'w':
+                    x--;
+                    break;
+            }
+        }
+        return x == 0 && y == 0;
+    }
+    public static boolean isValidClever(char[] walk) {
+        if (walk.length != 10) return false;
+
+        int x = 0, y = 0;
+        for (char c: walk) {
+            switch (c) {
+                case 'n': y++; break;
+                case 's': y--; break;
+                case 'w': x++; break;
+                case 'e': x--; break;
+            }
+        }
+
+        return x == 0 && y == 0;
+    }
 }
