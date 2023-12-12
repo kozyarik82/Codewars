@@ -407,4 +407,31 @@ public class StringCode {
                 (names.length - 2) +
                 " others like this";
     }
+
+    // Реализуйте функцию, которая преобразует данное логическое значение в его строковое представление.
+    public static String convert(boolean b) {
+        return b ? "true" : "false";
+    }
+    public static String convertClever(boolean b){
+        return Boolean.toString(b);
+    }
+
+    // Ваша задача — отсортировать заданную строку. Каждое слово в строке будет содержать одно число.
+    // Это число обозначает позицию, которую слово должно занимать в результате.
+    //Примечание. Числа могут быть от 1 до 9. Таким образом, первым словом будет 1 (а не 0).
+    //Если входная строка пуста, верните пустую строку. Слова во входной строке будут содержать
+    // только допустимые последовательные числа.
+    public static String order(String words) {
+        if (words == null || words.isEmpty()) {
+            return "";
+        }
+        String[] wordsSorted = words.split("\\s+");
+        Arrays.sort(wordsSorted, Comparator.comparingInt(word -> Integer.parseInt(word.replaceAll("\\D", ""))));
+        return String.join(" ", wordsSorted);
+    }
+    public static String orderBest(String words) {
+        return Arrays.stream(words.split(" "))
+                .sorted(Comparator.comparing(s -> Integer.valueOf(s.replaceAll("\\D", ""))))
+                .reduce((a, b) -> a + " " + b).get();
+    }
 }

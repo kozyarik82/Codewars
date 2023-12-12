@@ -47,5 +47,7 @@ public class Main {
         System.out.println(Array.check(new Object[] {"what", "a", "great", "kata"}, "kat"));
         System.out.println(StringCode.whoLikesIt("Max", "John", "Mark"));
         System.out.println(Array.isValid(new char[] {'n','s','n','s','n','s','n','s','n','s'}));
+        System.out.println(StringCode.convert(true));
+        System.out.println(StringCode.order("is2 Thi1s T4est 3a"));
     }
 }

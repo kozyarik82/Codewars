@@ -345,22 +345,22 @@ public class Array {
     // (вы не хочу ни рано, ни поздно!) и, конечно же, вернет вас в исходную точку.
     // В противном случае верните false .
     public static boolean isValid(char[] walk) {
-        String north = "";
-        String south = "";
-        String west = "";
-        String east = "";
+        StringBuilder north = new StringBuilder();
+        StringBuilder south = new StringBuilder();
+        StringBuilder west = new StringBuilder();
+        StringBuilder east = new StringBuilder();
         for (int i = 0; i < walk.length; i++) {
             if (walk[i] == 'n') {
-                north += walk[i];
+                north.append(walk[i]);
             }
             if (walk[i] == 's') {
-                south += walk[i];
+                south.append(walk[i]);
             }
             if (walk[i] == 'w') {
-                west += walk[i];
+                west.append(walk[i]);
             }
             if (walk[i] == 'e') {
-                east += walk[i];
+                east.append(walk[i]);
             }
         }
         if (north.length() == south.length() && west.length() == east.length() && walk.length ==10) {
