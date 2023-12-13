@@ -3,6 +3,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static java.lang.Math.sqrt;
+
 public class NumberCode {
     //  по заданному целому числу или числу с плавающей запятой найдите его противоположность.
     public static int opposite(int number)
@@ -317,7 +319,45 @@ public class NumberCode {
         return false;
     }
     public static boolean isSquareClever(int n) {
-        return Math.sqrt(n) % 1 == 0;
+        return sqrt(n) % 1 == 0;
     }
 
+    // Возможно, вы знаете несколько довольно больших идеальных квадратов. А как насчет СЛЕДУЮЩЕГО?
+    // Завершите findNextSquareметод, который находит следующий целочисленный идеальный квадрат после переданного
+    // в качестве параметра. Напомним, что целочисленный совершенный квадрат — это целое число n такое,
+    // что sqrt(n) также является целым числом.
+    // Если параметр сам по себе не является идеальным квадратом, его -1следует вернуть.
+    // Вы можете предположить, что параметр неотрицательный.
+    public static long findNextSquare(long sq) {
+        if (sqrt(sq) % 1 != 0) {
+            return -1;
+        }
+        long result = 0;
+        for (long i = sq +1; i > sq; i++) {
+            if (sqrt(i) % 1 == 0) {
+                result = i;
+                break;
+            }
+        }
+        return result;
+    }
+    public static long findNextSquareBest(long sq) {
+        return Math.sqrt(sq) % 1 != 0 ? -1 : (long)Math.pow(Math.sqrt(sq)+1,2);
+    }
+    public static long findNextSquareClever(long sq) {
+        long root = (long) Math.sqrt(sq);
+        return root * root == sq ? (root + 1) * (root + 1) : -1;
+    }
+
+    // Натан любит кататься на велосипеде.
+    // Поскольку Натан знает, как важно избегать обезвоживания, он выпивает 0,5 литра воды за час езды на велосипеде.
+    // Вам дано время в часах, и вам нужно вернуть количество литров, которое выпьет Натан, округленное до наименьшего значения.
+    public static int liters(double time)  {
+        return (int) (time * 0.5) - (int) (time * 0.5 % 1);
+    }
+    public int litersBest(double time)  {
+
+        return (int)(time / 2);
+
+    }
 }

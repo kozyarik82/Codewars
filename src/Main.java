@@ -49,5 +49,8 @@ public class Main {
         System.out.println(Array.isValid(new char[] {'n','s','n','s','n','s','n','s','n','s'}));
         System.out.println(StringCode.convert(true));
         System.out.println(StringCode.order("is2 Thi1s T4est 3a"));
+        System.out.println(StringCode.repeatStr(3, "Hello"));
+        System.out.println(NumberCode.findNextSquare(15241630849l));
+        System.out.println(NumberCode.liters(14.64));
     }
 }

@@ -1,6 +1,7 @@
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static java.util.Arrays.stream;
 
@@ -433,5 +434,62 @@ public class StringCode {
         return Arrays.stream(words.split(" "))
                 .sorted(Comparator.comparing(s -> Integer.valueOf(s.replaceAll("\\D", ""))))
                 .reduce((a, b) -> a + " " + b).get();
+    }
+
+    // Возьмите 2 строки s1и s2включайте только буквы от aдо z. Возвращает новую отсортированную строку,
+    // максимально длинную, содержащую отдельные буквы (каждая из которых берется только один раз),
+    // исходящие из s1 или s2.
+    public static String longest (String s1, String s2) {
+        String combined = s1 + s2;
+        String result = combined.chars()
+                .filter(Character::isLetter)
+                .distinct()
+                .mapToObj(c -> String.valueOf((char) c))
+                .sorted()
+                .collect(Collectors.joining());
+        return result;
+    }
+    public static String longestClever (String s1, String s2) {
+        String s = s1 + s2;
+        return s.chars().distinct().sorted().collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
+    }
+    public static String longestBest (String s1, String s2) {
+        StringBuilder sb = new StringBuilder();
+        (s1 + s2).chars().distinct().sorted().forEach(c -> sb.append((char) c));
+        return sb.toString();
+    }
+    public static String longestClever1 (String s1, String s2) {
+        return Stream.of(s1.concat(s2).split(""))
+                .sorted()
+                .distinct()
+                .collect(Collectors.joining());
+    }
+    public static String longestNormal (String s1, String s2) {
+        TreeSet<Character> set = new TreeSet<>();
+
+        //Combine both strings into a single String
+        String s1s2 = s1 + s2;
+        //Create a StringBuilder that we will us to create our result String
+        StringBuilder sb = new StringBuilder();
+
+        //Add all characters to TreeSet. Now they are ordered and only 1 occurence of each
+        for(int i = 0; i < s1s2.length(); i++)
+            set.add(s1s2.charAt(i));
+
+        //Build our StringBuilder by interating over the Set
+        for(Character c : set)
+            sb.append(c);
+
+        //Return the result as a String
+        return new String(sb);
+    }
+
+    // Напишите функцию, которая принимает целое число n и строку s в качестве параметров
+    // и возвращает строку, sповторяющуюся ровно n раз.
+    public static String repeatStr(final int repeat, final String string) {
+        return string.repeat(repeat);
+    }
+    public static String repeatStrBest(final int repeat, final String string) {
+        return repeat >= 0 ? string.repeat(repeat) : "";
     }
 }
