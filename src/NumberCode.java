@@ -3,6 +3,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static java.awt.Color.green;
+import static java.awt.Color.yellow;
 import static java.lang.Math.sqrt;
 
 public class NumberCode {
@@ -356,8 +358,55 @@ public class NumberCode {
         return (int) (time * 0.5) - (int) (time * 0.5 % 1);
     }
     public int litersBest(double time)  {
-
         return (int)(time / 2);
+    }
 
+    // Вы пишете код для управления светофорами вашего города. Вам нужна функция для обработки каждого изменения
+    // от green, до yellow, до red и затем green снова.
+    // Завершите функцию, которая принимает строку в качестве аргумента, представляющую текущее состояние
+    // источника света, и возвращает строку, представляющую состояние, в которое должен перейти источник света.
+    // Например, если на входе green, на выходе должно быть yellow.
+    public static String updateLight(String current) {
+        switch (current) {
+            case "green":
+                return "yellow";
+            case "yellow":
+                return "red";
+            case "red":
+                return "green";
+        }
+        return "not relevant";
+    }
+
+    public static String updateLightBest(String current) {
+        return (current.equals("red") ? "green" : current.equals("yellow") ? "red" : "yellow");
+    }
+
+    // Тимми и amp; Сара думает, что они влюблены, но где они живут, они узнают об этом только тогда,
+    // когда сорвут каждый по цветку. Если у одного цветка четное количество лепестков, а у другого нечетное,
+    // это означает, что они влюблены.
+    // Напишите функцию, которая будет принимать количество лепестков каждого цветка и возвращать true,
+    // если они влюблены, и false, если нет.
+    public static boolean isLove(final int flower1, final int flower2) {
+        return (flower1 + flower2) % 2 != 0;
+    }
+    public static boolean isLoveClever(final int flower1, final int flower2) {
+        return flower1 % 2 != flower2 % 2;
+    }
+    // Создайте функцию, которая выдает персонализированное приветствие. Эта функция принимает два параметра:
+    // name и owner.
+    // Используйте условные выражения, чтобы вернуть правильное сообщение:
+    // случай	возвращаться
+    // имя равно владельцу	«Привет, босс!»
+    // в противном случае	«Здравствуйте, гость!»
+    public static String greet(String name, String owner) {
+        return name.equals(owner) ? "Hello boss" : "Hello guest";
+    }
+
+    // Учитывая список целых чисел, определите, является ли сумма его элементов нечетной или четной.
+    // Дайте ответ в виде строки, соответствующей "odd" или "even".
+    // Если входной массив пуст, рассматривайте его как: [0] (массив с нулем).
+    public static String oddOrEven (int[] array) {
+        return Arrays.stream(array).sum() % 2 == 0 ? "even" : "odd";
     }
 }

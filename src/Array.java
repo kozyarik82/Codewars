@@ -4,6 +4,8 @@ import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 import static java.util.Arrays.asList;
+import static java.util.Arrays.stream;
+import static java.util.stream.IntStream.iterate;
 
 public class Array {
 
@@ -58,7 +60,7 @@ public class Array {
         return result;
     }
     public static int sumClever(int[] arr){
-        return Arrays.stream(arr).filter(v -> v > 0).sum();
+        return stream(arr).filter(v -> v > 0).sum();
     }
 
     // Найдите наименьшее число в массиве
@@ -128,7 +130,7 @@ public class Array {
         return DoubleStream.of(numbers).sum();
     }
     public static double sumBest(double[] numbers) {
-        return Arrays.stream(numbers).sum();
+        return stream(numbers).sum();
     }
 
     //Сможете ли вы найти иголку в стоге сена?
@@ -166,12 +168,12 @@ public class Array {
     //Примечание. Пустые массивы должны возвращать 0.
 
     public static double find_average(int[] array){
-        double sum = Arrays.stream(array).sum();
-        long count = Arrays.stream(array).count();
+        double sum = stream(array).sum();
+        long count = stream(array).count();
         return sum / count;
     }
     public static double find_averageClever(int[] array){
-        return Arrays.stream(array).average().orElse(0);
+        return stream(array).average().orElse(0);
     }
     public static double find_averageBest(int[] array){
         double sum = 0;
@@ -208,7 +210,7 @@ public class Array {
     //invert([]) == []
 
     public static int[] invertBest(int[] array) {
-        return Arrays.stream(array).map(x -> -x).toArray();
+        return stream(array).map(x -> -x).toArray();
     }
     public static int[] invert(int[] array) {
         for(int i = 0; i < array.length; i++) {
@@ -227,7 +229,7 @@ public class Array {
         return result;
     }
     public static int growClever(int[] x){
-        return Arrays.stream(x).reduce(1 ,(a, b) -> a * b);
+        return stream(x).reduce(1 ,(a, b) -> a * b);
     }
 
     // Есть массив с некоторыми числами. Все числа равны, кроме одного. Попробуйте найти его!
@@ -278,7 +280,7 @@ public class Array {
 //            }
 //        }
 //        return false;
-        return Arrays.stream(classPoints).average().getAsDouble() <= yourPoints;
+        return stream(classPoints).average().getAsDouble() <= yourPoints;
     }
 
     // Дан массив целых чисел.
@@ -404,4 +406,55 @@ public class Array {
 
         return x == 0 && y == 0;
     }
+
+    // Создайте функцию, которая возвращает массив целых чисел от n до 1, где n>0.
+    // Пример: n=5-->[5,4,3,2,1]
+    public static int[] reverse(int n){
+        int[] result = new int[n];
+        for (int i = 0; i < n; i++) {
+            result[i] = n - i;
+        }
+        return result;
+    }
+    public static int[] reverseBest(int n){
+        return IntStream.range(-n, 0).map(Math::abs).toArray();
+    }
+    public static int[] reverseClever(int n){
+        return iterate(n, i -> i - 1).limit(n).toArray();
+    }
+
+    // В массиве целых чисел найдите то, которое встречается нечетное количество раз.
+    //Всегда будет только одно целое число, которое появляется нечетное количество раз.
+    public static int findIt(int[] a) {
+        Map<Integer, Integer> result = new HashMap<>();
+        for (int num : a) {
+            result.put(num, result.getOrDefault(num, 0) + 1);
+        }
+            for (Map.Entry<Integer, Integer> entry : result.entrySet()) {
+                if (entry.getValue() % 2 != 0) {
+                    return entry.getKey();
+                }
+            }
+        throw new IllegalArgumentException("В массиве нет числа с нечетным количеством вхождений.");
+    }
+    public static int findItBest(int[] arr) {
+        return stream(arr).reduce(0, (x, y) -> x ^ y);
+    }
+
+    // Возьмите массив и удалите из него каждый второй элемент. Всегда сохраняйте первый элемент и начинайте
+    // удаление со следующего элемента.
+    public static Object[] removeEveryOther(Object[] arr) {
+        List<Object> result = new ArrayList<>();
+        for (int i = 0; i< arr.length; i += 2) {
+            result.add(arr[i]);
+        }
+        return result.toArray();
+    }
+    public static Object[] removeEveryOtherBest(Object[] arr) {
+        return IntStream.range(0, arr.length).filter(n -> n % 2 == 0).mapToObj(i->arr[i]).toArray();
+    }
+    static Object[] removeEveryOtherBest1(Object[] arr) {
+        return iterate(0, i -> i < arr.length, i -> i + 2).mapToObj(i -> arr[i]).toArray();
+    }
+
 }

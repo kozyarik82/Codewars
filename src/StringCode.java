@@ -492,4 +492,41 @@ public class StringCode {
     public static String repeatStrBest(final int repeat, final String string) {
         return repeat >= 0 ? string.repeat(repeat) : "";
     }
+
+    // Основная идея — подсчитать все встречающиеся символы в строке. Если у вас есть строка типа aba,
+    // результат должен быть {'a': 2, 'b': 1}.
+    // Что делать, если строка пуста? Тогда результатом должен быть пустой литерал объекта, {}.
+    public static Map<Character, Integer> count(String str) {
+        Map<Character, Integer> result = new HashMap<>();
+        if (str != null && !str.isEmpty()) {
+            for (char c : str.toCharArray()) {
+                result.put(c, result.getOrDefault(c, 0) + 1);
+            }
+        }
+        return result;
+    }
+    public static Map<Character, Integer> countBest(String str) {
+        return str
+                .chars()
+                .mapToObj(character -> (char) character)
+                .collect(Collectors.toMap(character -> character, character -> 1, Integer::sum));
+    }
+
+    // Напишите функцию, которая удаляет пробелы из строки, а затем возвращает результирующую строку.
+    public static String noSpace(final String x) {
+        return String.join("", x.split(" "));
+    }
+    static String noSpaceClever(final String x) {
+        return x.replace(" ", "");
+    }
+
+    // Нам нужна функция, которая может преобразовать строку в число. Какие способы достижения этой цели вы знаете?
+    // Примечание. Не волнуйтесь, все входные данные будут строками, и каждая строка является совершенно
+    // допустимым представлением целого числа.
+    public static int stringToNumber(String str) {
+        return Integer.parseInt(str);
+    }
+    public static int stringToNumberBest(String str) {
+        return Integer.valueOf(str);
+    }
 }

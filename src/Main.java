@@ -52,5 +52,12 @@ public class Main {
         System.out.println(StringCode.repeatStr(3, "Hello"));
         System.out.println(NumberCode.findNextSquare(15241630849l));
         System.out.println(NumberCode.liters(14.64));
+        System.out.println(NumberCode.updateLight("green"));
+        System.out.println(Arrays.toString(Array.reverse(10)));
+        System.out.println(StringCode.count("hello"));
+        System.out.println(StringCode.noSpace("8 j 8   mBliB8g  imjB8B8  jl  B"));
+        System.out.println(NumberCode.oddOrEven(new int[]{2, 5, 34, 6}));
+        System.out.println(Array.findIt(new int[]{20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5}));
+        System.out.println(Arrays.toString(Array.removeEveryOther(new Object[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 })));
     }
 }
