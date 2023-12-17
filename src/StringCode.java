@@ -529,4 +529,106 @@ public class StringCode {
     public static int stringToNumberBest(String str) {
         return Integer.valueOf(str);
     }
+
+    // Вам будет присвоен номер, и вам нужно будет вернуть его в виде строки в расширенной форме.
+    public static String expandedForm(int num) {
+        StringBuilder result = new StringBuilder();
+        int divisor = 1;
+
+        while (num > 0) {
+            int digit = num % 10;
+            if (digit > 0) {
+                if (!result.isEmpty()) {
+                    result.insert(0, " + ");
+                }
+                result.insert(0, digit * divisor);
+            }
+            num /= 10;
+            divisor *= 10;
+        }
+        return result.toString();
+    }
+    public static String expandedFormClever(int num) {
+        String outs = "";
+        for (int i = 10; i < num; i *= 10) {
+            int rem = num % i;
+            outs = (rem > 0) ? " + " + rem + outs : outs;
+            num -= rem;
+        }
+        outs = num + outs;
+        return outs;
+    }
+    public static String expandedFormBest(int num) {
+        return IntStream.range(0, String.valueOf(num).length())
+                .mapToObj(x -> String.valueOf( Character.getNumericValue(String.valueOf(num).charAt(x) ) * (int)Math.pow(10, String.valueOf(num).substring(x).length()-1)))
+                .filter(x -> !x.equals("0"))
+                .collect(Collectors.joining(" + "));
+    }
+    // Завершите решение так, чтобы оно перевернуло переданную в него строку.
+    public static String solutionBest(String str) {
+        return new StringBuilder(str).reverse().toString();
+    }
+    public static String solution(String str) {
+        String newcad="";
+        for(int i = str.length()-1; i >= 0; i--){
+            newcad += str.charAt(i);
+        }
+        return newcad;
+    }
+
+    // Завершите решение так, чтобы функция разбивала верблюжий регистр, используя пробел между словами.
+    public static String camelCase(String input) {
+        if (input == null || input.isEmpty()) {
+            return "";
+        }
+        StringBuilder result = new StringBuilder();
+        for (char ch : input.toCharArray()) {
+            if (Character.isUpperCase(ch)) {
+                result.append(' ').append(ch);
+            } else {
+                result.append(ch);
+            }
+        }
+        return result.toString().trim();
+    }
+    public static String camelCaseBest(String input) {
+        return input.replaceAll("([A-Z])", " $1");
+    }
+    public static String camelCaseClever(String input) {
+        String output = "";
+        for (int i = 0; i < input.length(); i++) {
+            output = Character.isUpperCase(input.charAt(i)) ? output + " " + input.charAt(i) : output + input.charAt(i);
+        }
+        return output;
+    }
+    public static String camel(String input) {
+        String result = "";
+        for (int i = 0; i < input.length(); i++) {
+            if (Character.isUpperCase(input.charAt(i))) {
+                result = result + " " + input.charAt(i);
+            }else{
+                result += input.charAt(i);
+            }
+        }
+        return result;
+    }
+
+    // Просто, учитывая строку слов, верните длину самого короткого слова (слов).
+    // Строка никогда не будет пустой, и вам не нужно учитывать разные типы данных.
+    public static int findShort(String s) {
+        String[] words = s.split(" ");
+        int res = Integer.MAX_VALUE;
+        for (String result : words) {
+            if (result.length()<res) {
+                res = result.length();
+            }
+        }
+        return res;
+    }
+    public static int findShortBest(String s) {
+        return Stream.of(s.split(" "))
+                .mapToInt(String::length)
+                .min()
+                .getAsInt();
+    }
 }

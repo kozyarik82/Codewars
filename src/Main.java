@@ -59,5 +59,10 @@ public class Main {
         System.out.println(NumberCode.oddOrEven(new int[]{2, 5, 34, 6}));
         System.out.println(Array.findIt(new int[]{20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5}));
         System.out.println(Arrays.toString(Array.removeEveryOther(new Object[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 })));
+        System.out.println(Arrays.toString(Array.map(new int[]{4, 1, 1, 1, 4})));
+//        System.out.println(StringCode.solution("world"));
+        System.out.println(StringCode.camel("camelCasing"));
+        System.out.println(NumberCode.hoopCount(2));
+        System.out.println(StringCode.findShort("Let's travel abroad shall we"));
     }
 }

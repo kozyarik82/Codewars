@@ -457,4 +457,21 @@ public class Array {
         return iterate(0, i -> i < arr.length, i -> i + 2).mapToObj(i -> arr[i]).toArray();
     }
 
+    // Учитывая массив целых чисел, верните новый массив, в котором каждое значение удвоено.
+    public static int[] map(int[] arr) {
+        int[] result = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            result[i] = arr[i] * 2;
+        }
+        return result;
+    }
+    public static int[] mapBest1(int[] arr) {
+        return Arrays.stream(arr).map(x -> x*2).toArray();
+    }
+    public static int[] mapClever(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] *= 2;
+        }
+        return arr;
+    }
 }
