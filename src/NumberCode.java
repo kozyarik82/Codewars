@@ -417,4 +417,10 @@ public class NumberCode {
     public static String hoopCount(int n){
         return n>=10 ? "Great, now move on to tricks" : "Keep at it until you get it" ;
     }
+
+    // Таракан – одно из самых быстрых насекомых. Напишите функцию, которая принимает скорость в км в час
+    // и возвращает ее в см в секунду, округляя до целого числа (= пол).
+    public static int cockroachSpeed(double x){
+        return  (int)((x * 100000) / 3600);
+    }
 }

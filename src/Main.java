@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -63,6 +64,10 @@ public class Main {
 //        System.out.println(StringCode.solution("world"));
         System.out.println(StringCode.camel("camelCasing"));
         System.out.println(NumberCode.hoopCount(2));
-        System.out.println(StringCode.findShort("Let's travel abroad shall we"));
+//        System.out.println(StringCode.findShort("Let's travel abroad shall we"));
+        List<String> a = new ArrayList<String>();
+        a.add(":)"); a.add("XD"); a.add(":0}"); a.add("x:-"); a.add("):-"); a.add("D:");
+        System.out.println(Array.countSmileys(a));
+        System.out.println(NumberCode.cockroachSpeed(1.09));
     }
 }

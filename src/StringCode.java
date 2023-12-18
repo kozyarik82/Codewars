@@ -631,4 +631,10 @@ public class StringCode {
                 .min()
                 .getAsInt();
     }
+
+    // Вам дан массив (список) strarr строк и целое число k. Ваша задача — вернуть первую самую длинную строку.
+    // состоящий из k последовательных строк, взятых в массиве.
+//    public static String longestConsec(String[] strarr, int k) {
+//        // your code
+//    }
 }

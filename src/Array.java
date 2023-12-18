@@ -474,4 +474,68 @@ public class Array {
         }
         return arr;
     }
+
+    // При наличии массива (arr) в качестве аргумента завершите функцию countSmileys, которая должна возвращать
+    // общее количество улыбающихся лиц.
+    // Правила улыбающегося лица:
+    // Каждый смайлик должен содержать действительную пару глаз. Глаза могут быть отмечены как : или .;
+    // У смайлика может быть нос, но это не обязательно. Допустимые символы для носа: - или .~
+    // У каждого улыбающегося лица должен быть улыбающийся рот, который должен быть помечен либо ), либо .D
+    // Никакие дополнительные символы, кроме упомянутых, не допускаются.
+    // Примеры допустимых смайлов: :) :D ;-D :~)
+    // Недопустимые смайлы: ;( :> :} :]
+    public static int countSmileys(List<String> arr) {
+        // Just Smile :)
+        List<String> validSmileys = Arrays.asList(":)", ";)", ":D", ";D", ":-)", ";-)", ":~)", ";~)", ":~D", ";~D");
+        int count = 0;
+        for (String smile : arr) {
+            if (validSmileys.contains(smile)) {
+                count++;
+            }
+        }
+        return count;
+    }
+    public static int countSmileysBest(List<String> arr) {
+        return (int)arr.stream().filter( x -> x.matches("[:;][-~]?[)D]")).count();
+    }
+
+    // Вам будет предоставлен массив целых чисел. Ваша задача — взять этот массив и найти индекс N,
+    // в котором сумма целых чисел слева от N равна сумме целых чисел справа от N.
+    // Если индекса, который мог бы сделать это, не существует, верните < /span>-1.
+    public static int findEvenIndex(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (sumLeft(arr, i) == sumRight(arr, i)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private static int sumLeft(int[] arr, int index) {
+        int sum = 0;
+        for (int i = 0; i < index; i++) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+
+    private static int sumRight(int[] arr, int index) {
+        int sum = 0;
+        for (int i = index + 1; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+
+    public static int findEvenIndexBest(int[] arr) {
+        int left = 0;
+        int right = Arrays.stream(arr).sum();
+        for (int i=0; i<arr.length; i++){
+            right -= arr[i];
+            if (left == right) return i;
+            left += arr[i];
+        }
+        return -1;
+    }
+
 }
