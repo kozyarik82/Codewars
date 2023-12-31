@@ -538,4 +538,28 @@ public class Array {
         return -1;
     }
 
+    // В супермаркете очередь к кассам самообслуживания. Ваша задача — написать функцию для расчета
+    // общего времени, необходимого всем клиентам для оформления заказа!
+    // вход
+    // клиенты: массив положительных целых чисел, представляющих очередь. Каждое целое число представляет клиента,
+    // а его значение — это количество времени, необходимое ему для оформления заказа.
+    // n: положительное целое число, количество касс.
+    // выход
+    // Функция должна возвращать целое число — общее требуемое время.
+    public static int solveSuperMarketQueueBest(int[] customers, int n) {
+        int[] result = new int[n];
+        for(int i = 0; i < customers.length; i++){
+            result[0] += customers[i];
+            Arrays.sort(result);
+        }
+        return result[n-1];
+    }
+    public static int solveSuperMarketQueue(int[] customers, int n) {
+        PriorityQueue<Integer> q = new PriorityQueue<>();
+        for (int i = 0; i < n; i++)
+            q.add(0);
+        for (int t : customers)
+            q.add(q.remove() + t);
+        return Collections.max(q);
+    }
 }

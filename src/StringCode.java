@@ -634,7 +634,87 @@ public class StringCode {
 
     // Вам дан массив (список) strarr строк и целое число k. Ваша задача — вернуть первую самую длинную строку.
     // состоящий из k последовательных строк, взятых в массиве.
-//    public static String longestConsec(String[] strarr, int k) {
-//        // your code
-//    }
+    public static String longestConsec(String[] strarr, int k) {
+        int n = strarr.length;
+
+        if (n == 0 || k > n || k <= 0) {
+            return "";
+        }
+
+        String result = "";
+        int maxLength = 0;
+
+        for (int i = 0; i <= n - k; i++) {
+            StringBuilder currentConsecutive = new StringBuilder();
+            for (int j = 0; j < k; j++) {
+                currentConsecutive.append(strarr[i + j]);
+            }
+            int currentLength = currentConsecutive.length();
+            if (currentLength > maxLength) {
+                maxLength = currentLength;
+                result = currentConsecutive.toString();
+            }
+        }
+        return result;
+    }
+    public static String longestConsecBest(String[] strarr, int k) {
+        if (k <= 0) {
+            return "";
+        }
+
+        return IntStream.rangeClosed(0, strarr.length - k)
+                .mapToObj(i -> Arrays.stream(strarr, i, i + k).collect(Collectors.joining()))
+                .max(Comparator.comparingInt(String::length))
+                .orElse("");
+    }
+
+    // Панграмма – это предложение, которое содержит каждую букву алфавита хотя бы один раз.
+    // Например, предложение «Быстрая бурая лиса прыгает через ленивого пса» является панграммой,
+    // поскольку в нем хотя бы один раз используются буквы AZ (регистр не имеет значения).
+    // Учитывая строку, определите, является ли она панграммой. Возвращайте True, если это так,
+    // и False, если нет. Не обращайте внимания на цифры и знаки препинания.
+    public static boolean check(String sentence){
+        // Преобразуем строку в нижний регистр и удалим все небуквенные символы
+        String cleanedStr = sentence.toLowerCase().replaceAll("[^a-z]", "");
+
+        // Создадим массив для отметки использованных букв
+        boolean[] isLetterUsed = new boolean[26];
+
+        // Перебираем каждый символ строки
+        for (int i = 0; i < cleanedStr.length(); i++) {
+            char currentChar = cleanedStr.charAt(i);
+            int index = currentChar - 'a'; // Индекс текущей буквы в массиве
+
+            // Отмечаем использование буквы
+            isLetterUsed[index] = true;
+        }
+
+        // Проверяем, были ли использованы все буквы
+        for (boolean used : isLetterUsed) {
+            if (!used) {
+                return false; // Найдена непримененная буква
+            }
+        }
+
+        return true; // Все буквы были использованы
+    }
+
+    public static boolean checkBest(String sentence){
+        for (char c = 'a'; c<='z'; c++)
+            if (!sentence.toLowerCase().contains("" + c))
+                return false;
+        return true;
+    }
+
+    public boolean checkClever(String sentence){
+        return sentence.chars().map(Character::toLowerCase).filter(Character::isAlphabetic).distinct().count() == 26;
+    }
+
+    boolean checkBest1(final String sentence) {
+        return sentence.chars()
+                .filter(Character::isLetter)
+                .map(Character::toLowerCase)
+                .distinct()
+                .count() == 26;
+    }
 }
