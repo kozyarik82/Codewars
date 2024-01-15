@@ -71,5 +71,7 @@ public class Main {
         System.out.println(NumberCode.cockroachSpeed(1.09));
         System.out.println(Array.solveSuperMarketQueue(new int[] { 1, 2, 3, 4, 5 }, 1));
         System.out.println(StringCode.checkBest("The quick brown fox jumps over the lazy dog."));
+        System.out.println(NumberCode.checkForFactor(24612, 3));
+        System.out.println(NumberCode.getGrade(70,70,100));
     }
 }

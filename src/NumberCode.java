@@ -423,4 +423,64 @@ public class NumberCode {
     public static int cockroachSpeed(double x){
         return  (int)((x * 100000) / 3600);
     }
+
+    // Эта функция должна проверять, является ли factorкоэффициент base.
+    // Возвращает значение true, если это фактор или falseнет.
+    public static boolean checkForFactor(int base, int factor) {
+        return base % factor == 0;
+    }
+
+    // Завершите функцию так, чтобы она находила среднее значение трех переданных ей оценок и возвращала
+    // буквенное значение, связанное с этой оценкой.
+    // Числовой балл	Буквенная оценка
+    // 90 <= оценка <= 100	'А'
+    // 80 <= оценка < 90	'B'
+    // 70 <= оценка < 80	'С'
+    // 60 <= оценка < 70	'D'
+    // 0 <= оценка < 60	'F'
+    // Все проверенные значения находятся в диапазоне от 0 до 100.
+    // Нет необходимости проверять отрицательные значения или значения, превышающие 100.
+    public static char getGrade(int s1, int s2, int s3) {
+        int s = (s1 + s2 + s3) / 3;
+        if (s >= 90 && s <= 100) {
+            return 'A';
+        }
+        if (s >= 80 && s < 90) {
+            return 'B';
+        }
+        if (s >= 70 && s < 80) {
+            return 'C';
+        }
+        if (s >= 60 && s < 70) {
+            return 'D';
+        }
+        else return 'F';
+    }
+    public static char getGradeBest(int s1, int s2, int s3) {
+        int mean = (s1 + s2 + s3) / 3;
+        if (mean >= 90) return 'A';
+        if (mean >= 80) return 'B';
+        if (mean >= 70) return 'C';
+        if (mean >= 60) return 'D';
+        return 'F';
+    }
+    public static char getGradeClever(int s1, int s2, int s3) {
+        int mean = (s1 + s2 + s3) / 3;
+        return mean > 89 ? 'A' : mean > 79 ? 'B' : mean > 69 ? 'C' : mean > 59 ? 'D' : 'F';
+    }
+    public static char getGradeClever1(int s1, int s2, int s3) {
+        switch ((s1 + s2 + s3) / 30) {
+            case 10:
+            case 9:
+                return 'A';
+            case 8:
+                return 'B';
+            case 7:
+                return 'C';
+            case 6:
+                return 'D';
+            default:
+                return 'F';
+        }
+    }
 }

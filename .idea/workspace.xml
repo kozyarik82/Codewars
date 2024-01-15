@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="65dbbdaf-7ca7-4d0e-9d03-4774d46ab287" name="Changes" comment="tasks fundamental">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Array.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StringCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StringCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NumberCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NumberCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +91,7 @@
       <workItem from="1702840919022" duration="14900000" />
       <workItem from="1702916343321" duration="5811000" />
       <workItem from="1704057662344" duration="2091000" />
+      <workItem from="1705265640767" duration="2066000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
